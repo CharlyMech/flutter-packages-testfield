@@ -1,16 +1,48 @@
 # flutter_kitchen
 
-A new Flutter project.
+Flutter personal project to test (cook) packages (receipts) for future development. I'll use this app also as a list of cool packages to use and how to use them
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Want to use it? Just fork it!
 
-A few resources to get you started if this is your first Flutter project:
+### Instructions
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+#### 1 Clone this repo and move to the directory created:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```bash
+	$ git clone https://github.com/CharlyMech/flutter_kitchen.git
+	$ cd flutter_kitchen
+```
+
+#### 2 Install Flutter SDK if not installed
+
+You can go to the official website to read the documentation about it: [Install flutter](https://docs.flutter.dev/get-started/install)
+
+Once Flutter is installed in your computer, the `flutter` command must be available to use.
+
+#### 3 Check if everything needed is installed
+
+Flutter as a built in command that checks if everything needed to use Flutter at his full potential is installed.
+
+```bash
+	$ flutter doctor
+```
+
+If there are missing dependencies, follow the instructions reported in command's output.
+
+#### 4 Install project's dependencies
+
+Once everything is set up for Flutter development, it's time to install the project's dependencies.
+
+```bash
+	$ flutter pub get
+```
+
+#### 5 Run the app
+
+The final step is running the app! You have multiple choices at this point depending on your IDE choice. For terminal, execute this command:
+
+```bash
+	$ flutter run
+```
