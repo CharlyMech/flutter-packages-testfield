@@ -45,15 +45,17 @@ class ThemeCubit extends Cubit<ThemeState> {
     switch (setTheme) {
       case ThemeType.light:
         emit(LightThemeState(lightTheme: themes[setTheme]!));
+        _saveThemePreference(ThemeType.light);
         break;
       case ThemeType.dark:
         emit(DarkThemeState(darkTheme: themes[setTheme]!));
+        _saveThemePreference(ThemeType.dark);
         break;
       case ThemeType.system:
-        emit(SystemThemeState(systemTheme: defaulTheme()));
-        break;
       default:
-        emit(SystemThemeState(systemTheme: defaulTheme()));
+        final systemTheme = defaulTheme();
+        emit(SystemThemeState(systemTheme: systemTheme));
+        _saveThemePreference(ThemeType.system);
         break;
     }
   }
@@ -61,10 +63,10 @@ class ThemeCubit extends Cubit<ThemeState> {
   void toggleTheme() {
     if (state is LightThemeState) {
       emit(DarkThemeState(darkTheme: themes[ThemeType.dark]!));
-      // _saveThemePreference(ThemeType.dark);
+      _saveThemePreference(ThemeType.dark);
     } else {
       emit(LightThemeState(lightTheme: themes[ThemeType.light]!));
-      // _saveThemePreference(ThemeType.light);
+      _saveThemePreference(ThemeType.light);
     }
   }
 
