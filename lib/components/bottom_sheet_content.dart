@@ -2,15 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_kitchen/constants/themes.dart';
 import 'package:flutter_kitchen/cubits/theme/theme_cubit.dart';
-import 'package:flutter_kitchen/utils/themes.dart';
+import 'package:flutter_kitchen/cubits/theme/theme_state.dart';
 
 class BottomSheetContent extends StatelessWidget {
   const BottomSheetContent({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeCubit, MyTheme>(
+    return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, themeState) {
+        bool isSystemDefault = themeState is SystemThemeState;
+        Function(bool)? switchToggleOnChange = isSystemDefault
+            ? null
+            : (_) => context.read<ThemeCubit>().toggleTheme();
         return Wrap(
           children: [
             Container(
@@ -45,7 +49,7 @@ class BottomSheetContent extends StatelessWidget {
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,10 +62,8 @@ class BottomSheetContent extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Switch(
-                                  value: themeState == themes[ThemeType.dark],
-                                  onChanged: (_) {
-                                    context.read<ThemeCubit>().toggleTheme();
-                                  },
+                                  value: themeState is DarkThemeState,
+                                  onChanged: switchToggleOnChange,
                                 ),
                                 const SizedBox(width: 10),
                                 const Text(
@@ -75,8 +77,18 @@ class BottomSheetContent extends StatelessWidget {
                             Row(
                               children: [
                                 Checkbox(
-                                  value: true,
-                                  onChanged: (_) {},
+                                  value: isSystemDefault,
+                                  onChanged: (_) {
+                                    if (isSystemDefault) {
+                                      context
+                                          .read<ThemeCubit>()
+                                          .setTheme(ThemeType.light);
+                                    } else {
+                                      context
+                                          .read<ThemeCubit>()
+                                          .setTheme(ThemeType.system);
+                                    }
+                                  },
                                 ),
                                 const Text(
                                   'System default',

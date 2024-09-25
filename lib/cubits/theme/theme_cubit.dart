@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_kitchen/constants/themes.dart';
+import 'package:flutter_kitchen/cubits/theme/theme_state.dart';
 import 'package:flutter_kitchen/utils/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class ThemeCubit extends Cubit<MyTheme> {
-  ThemeCubit() : super(defaulTheme());
+class ThemeCubit extends Cubit<ThemeState> {
+  ThemeCubit() : super(SystemThemeState(systemTheme: defaulTheme())) {
+    _initializeTheme();
+  }
 
   static MyTheme defaulTheme() {
     var brightness =
@@ -15,7 +18,7 @@ class ThemeCubit extends Cubit<MyTheme> {
         brightness == Brightness.dark ? ThemeType.dark : ThemeType.light]!;
   }
 
-  Future<void> getTheme() async {
+  void _initializeTheme() async {
     final themePref = await getThemeFromPreferences();
 
     if (themePref != null) {
@@ -23,19 +26,46 @@ class ThemeCubit extends Cubit<MyTheme> {
         (type) => type.toString() == themePref,
         orElse: () => ThemeType.system,
       );
-      emit(themes[themeType]!);
+
+      if (themeType == ThemeType.light) {
+        emit(LightThemeState(lightTheme: themes[ThemeType.light]!));
+      } else if (themeType == ThemeType.dark) {
+        emit(DarkThemeState(darkTheme: themes[ThemeType.dark]!));
+      }
     } else {
-      var brightness =
-          SchedulerBinding.instance.platformDispatcher.platformBrightness;
-      emit(themes[
-          brightness == Brightness.dark ? ThemeType.dark : ThemeType.light]!);
+      emit(SystemThemeState(systemTheme: defaulTheme()));
+    }
+  }
+
+  void setTheme(ThemeType theme) {
+    final ThemeType setTheme = ThemeType.values.firstWhere(
+      (type) => type == theme,
+      orElse: () => ThemeType.system,
+    );
+    switch (setTheme) {
+      case ThemeType.light:
+        emit(LightThemeState(lightTheme: themes[setTheme]!));
+        break;
+      case ThemeType.dark:
+        emit(DarkThemeState(darkTheme: themes[setTheme]!));
+        break;
+      case ThemeType.system:
+        emit(SystemThemeState(systemTheme: defaulTheme()));
+        break;
+      default:
+        emit(SystemThemeState(systemTheme: defaulTheme()));
+        break;
     }
   }
 
   void toggleTheme() {
-    final newTheme =
-        state == themes[ThemeType.light] ? ThemeType.dark : ThemeType.light;
-    emit(themes[newTheme]!);
+    if (state is LightThemeState) {
+      emit(DarkThemeState(darkTheme: themes[ThemeType.dark]!));
+      // _saveThemePreference(ThemeType.dark);
+    } else {
+      emit(LightThemeState(lightTheme: themes[ThemeType.light]!));
+      // _saveThemePreference(ThemeType.light);
+    }
   }
 
   Future<void> _saveThemePreference(ThemeType themeType) async {
