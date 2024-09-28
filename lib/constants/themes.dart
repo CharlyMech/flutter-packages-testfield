@@ -5,6 +5,7 @@ class MyTheme {
   final String primaryColor;
   final String primaryLight;
   final String primaryDark;
+  final String secondaryColor;
   final String colorRed;
   final String colorYellow;
   final String colorPurple;
@@ -19,6 +20,7 @@ class MyTheme {
     required this.primaryColor,
     required this.primaryLight,
     required this.primaryDark,
+    required this.secondaryColor,
     required this.colorRed,
     required this.colorYellow,
     required this.colorPurple,
@@ -32,10 +34,11 @@ class MyTheme {
 
 final Map<ThemeType, MyTheme> themes = {
   ThemeType.light: MyTheme(
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#E6E6E6",
     primaryColor: "#0553B1",
     primaryLight: "#027DFD",
     primaryDark: "#042B59",
+    secondaryColor: "#FFFFFF",
     colorRed: "#F25D50",
     colorYellow: "#FFF275",
     colorPurple: "#6200EE",
@@ -43,13 +46,14 @@ final Map<ThemeType, MyTheme> themes = {
     defaultText: "#212121",
     lightText: "#757575",
     darkText: "#FFFFFF",
-    shadow: "#202020",
+    shadow: "#909090",
   ),
   ThemeType.dark: MyTheme(
     backgroundColor: "#041E3C",
     primaryColor: "#0553B1",
     primaryLight: "#027DFD",
     primaryDark: "#042B59",
+    secondaryColor: "#042B59",
     colorRed: "#F25D50",
     colorYellow: "#FFF275",
     colorPurple: "#6200EE",
@@ -57,6 +61,6 @@ final Map<ThemeType, MyTheme> themes = {
     defaultText: "#FFFFFF",
     lightText: "#757575",
     darkText: "#FFFFFF",
-    shadow: "#202020",
+    shadow: "#909090",
   ),
 };

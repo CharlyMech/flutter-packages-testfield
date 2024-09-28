@@ -29,7 +29,7 @@ extension MyThemeToThemeData on MyTheme {
           primary: Color(int.parse(primaryColor.replaceFirst('#', '0xff'))),
           primaryContainer:
               Color(int.parse(primaryLight.replaceFirst('#', '0xff'))),
-          secondary: Color(int.parse(colorPurple.replaceFirst('#', '0xff'))),
+          secondary: Color(int.parse(secondaryColor.replaceFirst('#', '0xff'))),
           secondaryContainer:
               Color(int.parse(colorYellow.replaceFirst('#', '0xff'))),
           surface: Color(int.parse(backgroundColor.replaceFirst('#', '0xff'))),
@@ -43,8 +43,16 @@ extension MyThemeToThemeData on MyTheme {
               : Brightness.dark,
         ),
         appBarTheme: AppBarTheme(
-            color: Color(int.parse(backgroundColor.replaceFirst('#', '0xff'))),
-            shadowColor: Color(int.parse(shadow.replaceFirst('#', '0xff')))),
+          elevation: 0,
+          scrolledUnderElevation: 1,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10),
+                bottomRight: Radius.circular(10)),
+          ),
+          surfaceTintColor:
+              Color(int.parse(backgroundColor.replaceFirst('#', '0xff'))),
+        ),
         floatingActionButtonTheme: FloatingActionButtonThemeData(
           backgroundColor:
               Color(int.parse(primaryColor.replaceFirst('#', '0xff'))),
