@@ -1,6 +1,8 @@
-# flutter_kitchen
+# Flutter Kitchen
 
 Flutter personal project to test (cook) packages (receipts) for future development. I'll use this app also as a list of cool packages to use and how to use them
+
+![Flutter Kitchen project banner](public/flutter_kitchen_banner.png)
 
 ## Getting Started
 
