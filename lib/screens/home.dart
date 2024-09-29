@@ -7,18 +7,6 @@ import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 class Home extends StatelessWidget {
   const Home({super.key});
 
-  List<Widget> _buildHomeListContent() {
-    List<Widget> homeListContent = packages
-        .map((pkg) => CustomCard(
-            width: double.infinity,
-            padding: const EdgeInsets.all(15),
-            margin: const EdgeInsets.symmetric(vertical: 5),
-            borderRadius: const BorderRadius.all(Radius.circular(10)),
-            child: Text(pkg.name)))
-        .toList();
-    return homeListContent;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
