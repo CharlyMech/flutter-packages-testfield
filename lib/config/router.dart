@@ -53,7 +53,7 @@ final goRouter = GoRouter(routes: [
     path: '/logger',
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const PackageLayout(title: 'FL Chart', child: LoggerScreen()),
+        child: const PackageLayout(title: 'Logger', child: LoggerScreen()),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
@@ -70,7 +70,7 @@ final goRouter = GoRouter(routes: [
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
         child: const PackageLayout(
-            title: 'FL Chart', child: IntroductionScreenScreen()),
+            title: 'Introduction Screen', child: IntroductionScreenScreen()),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
