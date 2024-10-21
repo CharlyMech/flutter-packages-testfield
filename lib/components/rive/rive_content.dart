@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class RiveScreen extends StatelessWidget {
-  const RiveScreen({super.key});
+class RiveContent extends StatelessWidget {
+  const RiveContent({super.key});
 
   @override
   Widget build(BuildContext context) {

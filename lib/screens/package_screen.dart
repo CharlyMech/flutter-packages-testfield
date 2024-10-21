@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class PackageLayout extends StatelessWidget {
+class PackageScreen extends StatelessWidget {
   final String title;
   final Widget child;
-  const PackageLayout({super.key, required this.title, required this.child});
+  const PackageScreen({super.key, required this.title, required this.child});
 
   @override
   Widget build(BuildContext context) {

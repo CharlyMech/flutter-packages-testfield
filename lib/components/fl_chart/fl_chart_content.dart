@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class FlChartScreen extends StatelessWidget {
-  const FlChartScreen({super.key});
+class FlChartContent extends StatelessWidget {
+  const FlChartContent({super.key});
 
   @override
   Widget build(BuildContext context) {

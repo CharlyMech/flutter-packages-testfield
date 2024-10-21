@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kitchen/layouts/package_layout.dart';
+import 'package:flutter_kitchen/components/fl_chart/fl_chart_content.dart';
+import 'package:flutter_kitchen/components/introduction_screen/introduction_screen_content.dart';
+import 'package:flutter_kitchen/components/logger/logger_conent.dart';
+import 'package:flutter_kitchen/components/rive/rive_content.dart';
+import 'package:flutter_kitchen/screens/package_screen.dart';
 import 'package:flutter_kitchen/screens/home.dart';
-import 'package:flutter_kitchen/screens/packages/fl_chart/fl_chart_screen.dart';
-import 'package:flutter_kitchen/screens/packages/introduction_screen/introduction_screen_screen.dart';
-import 'package:flutter_kitchen/screens/packages/logger/logger_screen.dart';
-import 'package:flutter_kitchen/screens/packages/rive/rive_screen.dart';
 import 'package:go_router/go_router.dart';
 
 final goRouter = GoRouter(routes: [
@@ -18,9 +18,9 @@ final goRouter = GoRouter(routes: [
     path: '/rive',
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const PackageLayout(
+        child: const PackageScreen(
           title: 'Rive',
-          child: RiveScreen(),
+          child: RiveContent(),
         ),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
@@ -37,7 +37,7 @@ final goRouter = GoRouter(routes: [
     path: '/fl_chart',
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const PackageLayout(title: 'FL Chart', child: FlChartScreen()),
+        child: const PackageScreen(title: 'FL Chart', child: FlChartContent()),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
@@ -53,7 +53,7 @@ final goRouter = GoRouter(routes: [
     path: '/logger',
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const PackageLayout(title: 'Logger', child: LoggerScreen()),
+        child: const PackageScreen(title: 'Logger', child: LoggerContent()),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
@@ -69,8 +69,8 @@ final goRouter = GoRouter(routes: [
     path: '/introduction_screen',
     pageBuilder: (context, state) => CustomTransitionPage(
         key: state.pageKey,
-        child: const PackageLayout(
-            title: 'Introduction Screen', child: IntroductionScreenScreen()),
+        child: const PackageScreen(
+            title: 'Introduction Screen', child: IntroductionScreenContent()),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           return SlideTransition(
             position: Tween<Offset>(
