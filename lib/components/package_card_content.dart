@@ -51,13 +51,12 @@ class PackageCardContent extends StatelessWidget {
               ),
             ),
           ),
-          Expanded(
+          const Expanded(
             flex: 1,
             child: Align(
               alignment: Alignment.center,
               child: Icon(
                 Icons.arrow_forward_ios_rounded,
-                color: Theme.of(context).primaryColor,
                 size: 24,
               ),
             ),
