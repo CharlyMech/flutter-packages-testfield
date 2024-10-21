@@ -6,14 +6,14 @@ import 'package:flutter_kitchen/constants/packages.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class Home extends StatelessWidget {
-  final String appTitle;
-  const Home({super.key, required this.appTitle});
+  final String title;
+  const Home({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(appTitle),
+        title: Text(title),
         elevation: 5,
         shadowColor: Theme.of(context).shadowColor,
       ),
