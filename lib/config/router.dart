@@ -1,3 +1,4 @@
+import 'package:flutter_kitchen/layouts/package_layout.dart';
 import 'package:flutter_kitchen/screens/home.dart';
 import 'package:flutter_kitchen/screens/packages/fl_chart/fl_chart_screen.dart';
 import 'package:flutter_kitchen/screens/packages/introduction_screen/introduction_screen_screen.dart';
@@ -9,23 +10,29 @@ final goRouter = GoRouter(routes: [
   GoRoute(
     path: '/',
     builder: (context, state) => const Home(
-      appTitle: 'Flutter Kitchen',
+      title: 'Flutter Kitchen',
     ),
   ),
   GoRoute(
     path: '/rive',
-    builder: (context, state) => const RiveScreen(),
+    builder: (context, state) => const PackageLayout(
+      title: 'Rive',
+      child: RiveScreen(),
+    ),
   ),
   GoRoute(
     path: '/fl_chart',
-    builder: (context, state) => const FlChartScreen(),
+    builder: (context, state) =>
+        const PackageLayout(title: 'FL Chart', child: FlChartScreen()),
   ),
   GoRoute(
     path: '/logger',
-    builder: (context, state) => const LoggerScreen(),
+    builder: (context, state) =>
+        const PackageLayout(title: 'FL Chart', child: LoggerScreen()),
   ),
   GoRoute(
     path: '/introduction_screen',
-    builder: (context, state) => const IntroductionScreenScreen(),
+    builder: (context, state) => const PackageLayout(
+        title: 'FL Chart', child: IntroductionScreenScreen()),
   ),
 ]);

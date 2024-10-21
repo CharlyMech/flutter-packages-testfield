@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kitchen/models/package.dart';
+import 'package:go_router/go_router.dart';
 
 class PackageCardContent extends StatelessWidget {
   final Package package;
@@ -10,7 +11,7 @@ class PackageCardContent extends StatelessWidget {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
       splashColor: Theme.of(context).primaryColor.withOpacity(0.15),
-      onTap: () => print('Hello ${package.name}'),
+      onTap: () => context.push(package.route),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -35,7 +36,6 @@ class PackageCardContent extends StatelessWidget {
                           print('touched ${package.name}');
                         },
                         icon: const Icon(Icons.star_border_outlined),
-                        padding: EdgeInsets.all(0),
                         color: Theme.of(context).primaryColor,
                       ),
                     ],
