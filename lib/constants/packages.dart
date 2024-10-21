@@ -14,14 +14,14 @@ final List<Package> packages = [
       id: UniqueKey().hashCode,
       name: 'Logger',
       shortDescr:
-          'Flexible logging library for your Flutter app, allowing you to easily log at different levels.',
+          'Flexible logging library for your Flutter app, allowing you to easily log several messages types through console.',
       pubDevLink: 'https://pub.dev/packages/logger',
       route: '/logger'),
   Package(
       id: UniqueKey().hashCode,
       name: 'FL Chart',
       shortDescr:
-          'Rich set of customizable charts to visualize your data effectively in your Flutter app.',
+          'Rich set of customizable charts including line, bar, and pie charts, to visualize your data effectively in your Flutter app.',
       pubDevLink: 'https://pub.dev/packages/fl_chart',
       route: '/fl_chart'),
   Package(

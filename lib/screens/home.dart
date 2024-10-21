@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
             final pkg = packages[index];
             return CustomCard(
               width: double.infinity,
-              height: 110,
+              height: 130,
               margin: const EdgeInsets.symmetric(vertical: 5),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               child: PackageCardContent(
