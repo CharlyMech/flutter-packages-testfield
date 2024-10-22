@@ -2,16 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_kitchen/models/package.dart';
 import 'package:go_router/go_router.dart';
 
-class PackageCardContent extends StatelessWidget {
+class PackageCardContent extends StatefulWidget {
   final Package package;
   const PackageCardContent({super.key, required this.package});
+
+  @override
+  State<PackageCardContent> createState() => _PackageCardContentState();
+}
+
+class _PackageCardContentState extends State<PackageCardContent> {
+  bool _isLiked = false; // might be temporary until sqlite comes in...
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(10),
       splashColor: Theme.of(context).primaryColor.withOpacity(0.15),
-      onTap: () => context.push(package.route),
+      onTap: () => context.push(widget.package.route),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -25,7 +32,7 @@ class PackageCardContent extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        package.name,
+                        widget.package.name,
                         style: const TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
@@ -33,16 +40,19 @@ class PackageCardContent extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          print('touched ${package.name}');
+                          setState(() {
+                            _isLiked = !_isLiked;
+                          });
                         },
-                        icon: const Icon(Icons.star_border_outlined),
+                        icon: Icon(_isLiked ? Icons.star : Icons.star_border),
                         color: Theme.of(context).primaryColor,
+                        isSelected: _isLiked,
                       ),
                     ],
                   ),
                   // const SizedBox(height: 5),
                   Text(
-                    package.shortDescr,
+                    widget.package.shortDescr,
                     style: const TextStyle(fontSize: 14),
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
