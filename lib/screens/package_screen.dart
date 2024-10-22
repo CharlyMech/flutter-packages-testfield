@@ -22,7 +22,7 @@ class PackageScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(10.0),
+          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
           child: child,
         ),
       ),
