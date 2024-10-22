@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_kitchen/components/fl_chart/fl_chart_content.dart';
+import 'package:flutter_kitchen/components/fl_chart_content.dart';
 import 'package:flutter_kitchen/components/introduction_screen_content.dart';
 import 'package:flutter_kitchen/components/logger_conent.dart';
 import 'package:flutter_kitchen/components/rive_content.dart';
