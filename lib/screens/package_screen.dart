@@ -20,9 +20,11 @@ class PackageScreen extends StatelessWidget {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: child,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: child,
+        ),
       ),
     );
   }
