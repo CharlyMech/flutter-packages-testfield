@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_kitchen/components/fl_chart/fl_chart_content.dart';
-import 'package:flutter_kitchen/components/introduction_screen/introduction_screen_content.dart';
-import 'package:flutter_kitchen/components/logger/logger_conent.dart';
-import 'package:flutter_kitchen/components/rive/rive_content.dart';
+import 'package:flutter_kitchen/components/introduction_screen_content.dart';
+import 'package:flutter_kitchen/components/logger_conent.dart';
+import 'package:flutter_kitchen/components/rive_content.dart';
 import 'package:flutter_kitchen/screens/package_screen.dart';
 import 'package:flutter_kitchen/screens/home.dart';
 import 'package:go_router/go_router.dart';
