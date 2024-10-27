@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_kitchen/constants/themes.dart';
 import 'package:flutter_kitchen/cubits/theme/theme_cubit.dart';
 import 'package:flutter_kitchen/cubits/theme/theme_state.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 
 class BottomSheetContent extends StatelessWidget {
   const BottomSheetContent({super.key});
@@ -12,9 +13,6 @@ class BottomSheetContent extends StatelessWidget {
     return BlocBuilder<ThemeCubit, ThemeState>(
       builder: (context, themeState) {
         bool isSystemDefault = themeState is SystemThemeState;
-        Function(bool)? switchToggleOnChange = isSystemDefault
-            ? null
-            : (_) => context.read<ThemeCubit>().toggleTheme();
         return Wrap(
           children: [
             Container(
@@ -49,30 +47,28 @@ class BottomSheetContent extends StatelessWidget {
                               fontSize: 22, fontWeight: FontWeight.bold),
                         ),
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text(
-                                  'Light',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16),
+                            Opacity(
+                              opacity: isSystemDefault ? 0.7 : 1,
+                              child: FlutterSwitch(
+                                value: themeState is DarkThemeState,
+                                width: 75,
+                                height: 40,
+                                borderRadius: 24,
+                                toggleSize: 32,
+                                activeIcon: Icon(
+                                  Icons.dark_mode_rounded,
+                                  color: Theme.of(context).primaryColor,
                                 ),
-                                const SizedBox(width: 10),
-                                Switch(
-                                  value: themeState is DarkThemeState,
-                                  onChanged: switchToggleOnChange,
-                                ),
-                                const SizedBox(width: 10),
-                                const Text(
-                                  'Dark',
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      fontSize: 16),
-                                ),
-                              ],
+                                inactiveIcon: Icon(Icons.light_mode_rounded,
+                                    color: Theme.of(context).primaryColor),
+                                activeColor:
+                                    Theme.of(context).colorScheme.primary,
+                                onToggle: (_) => isSystemDefault
+                                    ? null
+                                    : context.read<ThemeCubit>().toggleTheme(),
+                              ),
                             ),
                             Row(
                               children: [
