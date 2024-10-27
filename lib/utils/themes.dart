@@ -34,7 +34,7 @@ extension MyThemeToThemeData on MyTheme {
               Color(int.parse(colorYellow.replaceFirst('#', '0xff'))),
           surface: Color(int.parse(backgroundColor.replaceFirst('#', '0xff'))),
           error: Color(int.parse(colorRed.replaceFirst('#', '0xff'))),
-          onPrimary: Color(int.parse(defaultText.replaceFirst('#', '0xff'))),
+          onPrimary: Color(int.parse(darkText.replaceFirst('#', '0xff'))),
           onSecondary: Color(int.parse(defaultText.replaceFirst('#', '0xff'))),
           onSurface: Color(int.parse(defaultText.replaceFirst('#', '0xff'))),
           onError: Color(int.parse(defaultText.replaceFirst('#', '0xff'))),
@@ -62,6 +62,17 @@ extension MyThemeToThemeData on MyTheme {
         buttonTheme: ButtonThemeData(
           buttonColor: Color(int.parse(primaryColor.replaceFirst('#', '0xff'))),
         ),
+        elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ButtonStyle(
+          backgroundColor: WidgetStateProperty.resolveWith<Color?>(
+              (Set<WidgetState> states) {
+            return Color(int.parse(primaryColor.replaceFirst('#', '0xff')));
+          }),
+          foregroundColor: WidgetStateProperty.resolveWith<Color?>(
+              (Set<WidgetState> states) {
+            return Color(int.parse(darkText.replaceFirst('#', '0xff')));
+          }),
+        )),
         // TODO -> IconButton Theme
         checkboxTheme: CheckboxThemeData(
           checkColor: WidgetStateProperty.resolveWith<Color?>(
